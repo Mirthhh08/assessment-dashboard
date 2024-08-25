@@ -11,6 +11,43 @@ import {
 } from "react-icons/md";
 import useStore from "../store/store";
 
+const SearchBar = ({ handleChange }) => {
+  const [query, setQuery] = useState("");
+  const searchWidgets = useStore((state) => state.searchWidgets);
+  const navigate = useNavigate();
+
+  const handleSearchInput = (e) => {
+    setQuery(e.target.value);
+  };
+  return (
+    <div className="fixed top-2 bg-white w-full  z-30">
+      <div className="border-2 w-[90%] mx-auto text-[#7e9aa8] border-blue-200 flex items-center gap-2 p-1 text-sm bg-[#f2f5fa] rounded-lg ">
+        <IoIosSearch
+          onClick={() => setSearchBarActive((prev) => !prev)}
+          className="cursor-pointer sm:text-xl text-lg"
+        />
+        <input
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && query.trim() !== "") {
+              searchWidgets(query.trim());
+              handleChange();
+              navigate(`/search-result/${query}`);
+            }
+          }}
+          onChange={handleSearchInput}
+          placeholder="Search anything..."
+          className="flex border-none w-full bg-[#f2f5fa] outline-none text-black"
+        />
+        <IoCloseCircleOutline
+          size={28}
+          onClick={handleChange}
+          className=" cursor-pointer"
+        />
+      </div>
+    </div>
+  );
+};
+
 const DropDownMenu = ({ setMenuActive }) => {
   return (
     <div className="absolute top-12 right-4 bg-white border border-blue-200  rounded-md shadow-lg p-4 z-50 sm:hidden">
@@ -49,35 +86,31 @@ const DropDownMenu = ({ setMenuActive }) => {
 };
 
 const Navbar = () => {
+  const [searchBarActive, setSearchBarActive] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
-  const [query, setQuery] = useState("");
-  const searchWidgets = useStore((state) => state.searchWidgets);
   const navigate = useNavigate();
-  const handleSearchInput = (e) => {
-    setQuery(e.target.value);
+  const handleChange = () => {
+    setSearchBarActive((prev) => !prev);
   };
+
   return (
     <div className="flex md:px-10 px-4 py-2">
+      {searchBarActive && <SearchBar handleChange={handleChange} />}
       <div className="flex items-center gap-1 font-bold text-gray-600">
         <p className="opacity-65">Home</p>
         <MdOutlineKeyboardArrowRight size={18} className="opacity-65" />
-        <p className="text-blue-950 cursor-pointer" onClick={() => navigate("/")}>
+        <p
+          className="text-blue-950 cursor-pointer"
+          onClick={() => navigate("/")}
+        >
           Dashboard V2
         </p>
       </div>
       <div className="ml-auto flex gap-4 items-center">
         <div className="border-2 text-[#7e9aa8] border-blue-200 md:flex items-center gap-2 p-1 text-sm bg-[#f2f5fa] rounded-lg ">
-          <IoIosSearch className="cursor-pointer sm:text-xl text-lg" />
-          <input
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && query.trim() !== "") {
-                searchWidgets(query.trim());
-                navigate(`/search-result/${query}`);
-              }
-            }}
-            onChange={handleSearchInput}
-            placeholder="Search anything..."
-            className="hidden md:flex border-none w-[350px] bg-[#f2f5fa] outline-none text-black"
+          <IoIosSearch
+            onClick={handleChange}
+            className="cursor-pointer sm:text-xl text-lg"
           />
         </div>
         <div className="hidden sm:flex gap-4 items-center">

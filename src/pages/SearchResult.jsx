@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import useStore from "../store/store.js";
-
-import { Cspm } from "../components/Dashboard/index.js";
 import DoughnutChart from "../components/Charts/DoughnutChart.jsx";
 import HorizontalBarChart from "../components/Charts/HorizontalBarChart.jsx";
 const SearchResult = () => {
