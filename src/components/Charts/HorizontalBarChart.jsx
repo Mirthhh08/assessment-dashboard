@@ -21,13 +21,13 @@ ChartJS.register(
 
 const HorizontalBarChart = ({ data }) => {
   const options = {
-    indexAxis: "y", // Makes the chart horizontal
+    indexAxis: "y", 
     scales: {
       x: {
-        stacked: true, // Stacks the bars horizontally
+        stacked: true, 
       },
       y: {
-        stacked: true, // Stacks the bars horizontally
+        stacked: true, 
       },
     },
     responsive: true,

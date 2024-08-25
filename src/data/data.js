@@ -71,7 +71,7 @@ export const registryScan = [
           backgroundColor: '#ffd11a',
         },
         {
-          label: 'Low',
+          label: 'None',
           data: [10],
           backgroundColor: '#aaaaaa',
         }
@@ -107,6 +107,11 @@ export const registryScan = [
           data: [1],
           backgroundColor: '#ffd11a',
         },
+        {
+          label: 'None',
+          data: [1],
+          backgroundColor: '#aaaaaa',
+        }
       ],
     },
   },

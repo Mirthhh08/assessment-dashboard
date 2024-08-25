@@ -13,7 +13,9 @@ const Navbar = () => {
       </p>
       <div className="flex  gap-4 ml-auto">
         <div
-          onClick={toggleWidgetMenu}
+          onClick={() => {
+            toggleWidgetMenu("cspm");
+          }}
           className=" border-2 border-gray-300 py-1 px-3 rounded-md flex gap-2 items-center cursor-pointer"
         >
           <p className="hidden sm:flex font-semibold">Add Widget</p>

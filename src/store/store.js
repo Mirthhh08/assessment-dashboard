@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { cspmExecutiveDashboard, cwppDashboard, registryScan } from "../data/data";
 const useStore = create((set) => ({
+    searchResults: {},
     isActive: "cspm",
     widgetMenu: false,
     categories: {
@@ -9,24 +10,6 @@ const useStore = create((set) => ({
         registry: registryScan
 
     },
-
-    // addWidget: (category, widget) =>
-    //     set((state) => ({
-    //         categories: {
-    //             ...state.categories,
-    //             [category]: [...state.categories[category], widget],
-    //         },
-    //     })),
-
-
-    // removeWidget: (category, widgetId) =>
-    //     set((state) => ({
-    //         categories: {
-    //             ...state.categories,
-    //             [category]: state.categories[category].filter(widget => widget.id !== widgetId),
-    //         },
-    //     })),
-
 
     changeIsActive: (str = "cspm") =>
         set(() => ({
@@ -49,12 +32,22 @@ const useStore = create((set) => ({
             }
         })),
 
-    toggleWidgetMenu: (str = "cspm") => {
+    toggleWidgetMenu: (str) =>
         set((state) => ({
             widgetMenu: !state.widgetMenu,
             isActive: str
-        }))
-    }
+        })),
+
+    searchWidgets: (searchTerm) =>
+        set((state) => {
+            const result = {};
+            Object.keys(state.categories).forEach(category => {
+                result[category] = state.categories[category].filter(widget =>
+                    widget.title.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+            });
+            return { searchResults: result };
+        }),
 
 }))
 

@@ -1,18 +1,15 @@
 import React from "react";
-import AddWidget from "./components/AddWidget";
-import Navbar from "./components/Navbar";
+import { Route, Routes } from "react-router-dom";
+import SearchResult from "./pages/SearchResult.jsx"
 import Home from "./pages/Home";
-import useStore from "./store/store";
 const App = () => {
-  const toggleWidget = useStore((state) => state.widgetMenu);
-
   return (
-    <div className="">
-      <Navbar />
-      <Home />
-
-      {toggleWidget && <AddWidget />}
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/search-result/:query" element={<SearchResult/>}/>
+      </Routes>
+    </>
   );
 };
 

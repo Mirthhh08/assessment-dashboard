@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { IoIosSearch } from "react-icons/io";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { FaCircleUser } from "react-icons/fa6";
@@ -8,6 +9,7 @@ import {
   MdOutlineKeyboardArrowDown,
   MdOutlineNotificationsActive,
 } from "react-icons/md";
+import useStore from "../store/store";
 
 const DropDownMenu = ({ setMenuActive }) => {
   return (
@@ -48,17 +50,32 @@ const DropDownMenu = ({ setMenuActive }) => {
 
 const Navbar = () => {
   const [menuActive, setMenuActive] = useState(false);
+  const [query, setQuery] = useState("");
+  const searchWidgets = useStore((state) => state.searchWidgets);
+  const navigate = useNavigate();
+  const handleSearchInput = (e) => {
+    setQuery(e.target.value);
+  };
   return (
     <div className="flex md:px-10 px-4 py-2">
       <div className="flex items-center gap-1 font-bold text-gray-600">
         <p className="opacity-65">Home</p>
         <MdOutlineKeyboardArrowRight size={18} className="opacity-65" />
-        <p className="text-blue-950">Dashboard V2</p>
+        <p className="text-blue-950 cursor-pointer" onClick={() => navigate("/")}>
+          Dashboard V2
+        </p>
       </div>
       <div className="ml-auto flex gap-4 items-center">
         <div className="border-2 text-[#7e9aa8] border-blue-200 md:flex items-center gap-2 p-1 text-sm bg-[#f2f5fa] rounded-lg ">
           <IoIosSearch className="cursor-pointer sm:text-xl text-lg" />
           <input
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && query.trim() !== "") {
+                searchWidgets(query.trim());
+                navigate(`/search-result/${query}`);
+              }
+            }}
+            onChange={handleSearchInput}
             placeholder="Search anything..."
             className="hidden md:flex border-none w-[350px] bg-[#f2f5fa] outline-none text-black"
           />
