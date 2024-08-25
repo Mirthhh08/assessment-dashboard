@@ -23,7 +23,7 @@ cd dashboard
 npm install
 ```
 
-### 3. Start the server:
+### 3. Run the app:
 
 ```bash
 npm run dev
