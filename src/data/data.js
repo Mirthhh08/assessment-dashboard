@@ -47,14 +47,33 @@ export const registryScan = [
         "isVisible": true,
         "total": 1470,
         "data": {
-            "labels": ["Critical", "High", "Medium", "Low"],
+            "labels": [""],
             "datasets": [
                 {
-                    "label": "Image Risk",
-                    "data": [9, 150, 673, 638],
-                    "backgroundColor": ["#c0392b", "#e74c3c", "#f39c12", "#f1c40f"],
-                    "hoverOffset": 4,
-                }
+                    label: 'Critical',
+                    data: [19],
+                    backgroundColor: '#ff1a1a',
+                  },
+                  {
+                    label: 'High',
+                    data: [150],
+                    backgroundColor: '#ff751a',
+                  },
+                  {
+                    label: 'Medium',
+                    data: [700],
+                    backgroundColor: '#ffaa1a',
+                  },
+                  {
+                    label: 'Low',
+                    data: [611],
+                    backgroundColor: '#ffd11a',
+                  },
+                  {
+                    label: 'Low',
+                    data: [10],
+                    backgroundColor: '#aaaaaa',
+                  }
             ],
         },
     },
@@ -64,14 +83,28 @@ export const registryScan = [
         "isVisible": true,
         "total": 2,
         "data": {
-            "labels": ["Critical", "High", "Medium", "Low"],
+            "labels": [""],
             "datasets": [
                 {
-                    "label": "Security Issues",
-                    "data": [2, 2, 2, 1],
-                    "backgroundColor": ["#c0392b", "#e74c3c", "#f39c12", "#f1c40f"],
-                    "hoverOffset": 4,
-                }
+                    label: 'Critical',
+                    data: [2],
+                    backgroundColor: '#ff1a1a',
+                  },
+                  {
+                    label: 'High',
+                    data: [2],
+                    backgroundColor: '#ff751a',
+                  },
+                  {
+                    label: 'Medium',
+                    data: [2],
+                    backgroundColor: '#ffaa1a',
+                  },
+                  {
+                    label: 'Low',
+                    data: [1],
+                    backgroundColor: '#ffd11a',
+                  },
             ],
         },
     },
