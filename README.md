@@ -1,8 +1,30 @@
-# React + Vite
+# Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the dashboard, assignment for the frontend trainee position.
 
-Currently, two official plugins are available:
+## Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React.js**
+- **Tailwind CSS**
+- **Chart.js**
+
+## Installation and Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Mirthhh08/assessment-dashboard
+```
+
+### 2. Install dependencies:
+
+```  bash
+cd dashboard
+npm install
+```
+
+### 3. Start the server:
+
+```bash
+npm run dev
+```
