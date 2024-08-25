@@ -36,7 +36,7 @@ const Option = ({ data, handleChange }) => {
               type="checkbox"
               id={`checkbox-${idx}`}
               className="mr-2 bg-[#0d0d50] cursor-pointer w-4 h-4"
-              checked={localVisibility[idx]}
+              checked={localVisibility[idx] || false}
               onChange={() => handleChecboxChange(idx)}
             />
             <label
@@ -53,8 +53,9 @@ const Option = ({ data, handleChange }) => {
 };
 
 const AddWidget = () => {
-  const [isActive, setIsActive] = useState("cspm");
   const [localVisibility, setLocalVisibility] = useState({});
+  const isActive = useStore((state) => state.isActive);
+  const changeIsActive = useStore((state) => state.changeIsActive);
   const data = useStore((state) => state.categories);
   const toggleWidget = useStore((state) => state.widgetMenu);
   const toggleisVisble = useStore((state) => state.toggleisVisble);
@@ -93,40 +94,40 @@ const AddWidget = () => {
         </p>
         <div className="mt-2 px-4 flex flex-row items-center gap-10 font-semibold">
           <button
-            onClick={() => setIsActive("cspm")}
+            onClick={() => changeIsActive("cspm")}
             className={` ${
               isActive === "cspm"
-                ? "border-b-2 border-[#0d0d50] text-[#0d0d50]"
+                ? "border-b-2 border-[#0d0d50] text-[#0d0d50] transition-colors duration-300 ease-in-out"
                 : ""
             }`}
           >
             CSPM
           </button>
           <button
-            onClick={() => setIsActive("cwpp")}
+            onClick={() => changeIsActive("cwpp")}
             className={` ${
               isActive === "cwpp"
-                ? "border-b-2 border-[#0d0d50] text-[#0d0d50]"
+                ? "border-b-2 border-[#0d0d50] text-[#0d0d50] transition-colors duration-300 ease-in-out"
                 : ""
             }`}
           >
             CWPP
           </button>
           <button
-            onClick={() => setIsActive("registry")}
+            onClick={() => changeIsActive("registry")}
             className={` ${
               isActive === "registry"
-                ? "border-b-2 border-[#0d0d50] text-[#0d0d50]"
+                ? "border-b-2 border-[#0d0d50] text-[#0d0d50] transition-colors duration-300 ease-in-out"
                 : ""
             }`}
           >
             Image
           </button>
           <button
-            onClick={() => setIsActive("ticket")}
+            onClick={() => changeIsActive("ticket")}
             className={` ${
               isActive === "ticket"
-                ? "border-b-2 border-[#0d0d50] text-[#0d0d50]"
+                ? "border-b-2 border-[#0d0d50] text-[#0d0d50] transition-colors duration-300 ease-in-out"
                 : ""
             }`}
           >

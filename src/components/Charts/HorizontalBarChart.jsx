@@ -38,9 +38,14 @@ const HorizontalBarChart = ({ data }) => {
     },
   };
 
+ 
+
   return (
-    <div className="my-4">
-      <Bar data={data} options={options} />
+    <div className="my-4 flex-col gap-4">
+      <p className="text-sm">
+        <span className="text-lg font-semibold mr-1">{data.total}</span> {data.desc}
+      </p>
+      <Bar data={data.data} options={options} />
     </div>
   );
 };

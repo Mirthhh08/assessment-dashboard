@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Cspm, Cwpp, RegistryScan } from "./Dashboard/index.js";
+import { Navbar, Cspm } from "./Dashboard/index.js";
 import DoughnutChart from "./Charts/DoughnutChart.jsx";
 import HorizontalBarChart from "./Charts/HorizontalBarChart.jsx";
 
@@ -14,17 +14,20 @@ const Dashboard = () => {
           title={"CSPM Executive Dashboard"}
           data={data?.cspm}
           Chart={DoughnutChart}
+          str={"cspm"}
         />
         <Cspm
           title={"CWPP Dashboard"}
           data={data?.cwpp}
           Chart={HorizontalBarChart}
+          str={"cwpp"}
         />
 
         <Cspm
           title={"Registry Scan"}
           data={data?.registry}
           Chart={HorizontalBarChart}
+          str={"registry"}
         />
       </div>
     </div>
