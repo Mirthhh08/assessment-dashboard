@@ -107,11 +107,14 @@ const Navbar = () => {
         </p>
       </div>
       <div className="ml-auto flex gap-4 items-center">
-        <div className="border-2 text-[#7e9aa8] border-blue-200 md:flex items-center gap-2 p-1 text-sm bg-[#f2f5fa] rounded-lg ">
-          <IoIosSearch
-            onClick={handleChange}
-            className="cursor-pointer sm:text-xl text-lg"
-          />
+        <div
+          onClick={handleChange}
+          className="border-2 text-[#7e9aa8] cursor-pointer border-blue-200 md:flex items-center gap-2 p-1 text-sm bg-[#f2f5fa] rounded-lg "
+        >
+          <IoIosSearch className=" sm:text-xl text-lg" />
+          <div className="hidden md:flex w-[300px]">
+            <p>Search Something...</p>
+          </div>
         </div>
         <div className="hidden sm:flex gap-4 items-center">
           <MdOutlineKeyboardArrowDown
